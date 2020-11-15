@@ -16,8 +16,11 @@ services:
       - AWS_DEFAULT_OUTPUT=json
       - AWS_REGION='us-west-2'
       - DOCKER_HOST=unix:///var/run/docker.sock
+      - HOSTNAME_EXTERNAL=localhost
+      - PORT_WEB_UI=8080
     volumes:
       - "./localstack_data:/tmp/localstack"
       - "./app-to-upload:/app-to-upload"
       - ./startup-scripts:/docker-entrypoint-initaws.d
       - "/var/run/docker.sock:/var/run/docker.sock"
+    privileged: true

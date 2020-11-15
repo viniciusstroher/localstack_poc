@@ -57,4 +57,7 @@ http://localhost:4566/health?reload
 
 
 ## Test Url
-S3-> http://localhost:4566/huller1/index.html
+http://localhost:4566/huller1/index.html
+
+## DynamoDb Admin
+http://localhost:8001/
