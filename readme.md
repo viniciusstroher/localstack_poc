@@ -53,3 +53,8 @@ awslocal s3 website s3://huller1 --index-document index.html --error-document er
 
 # Service discover
 http://localhost:4566/health?reload
+
+
+
+## Test Url
+S3-> http://localhost:4566/huller1/index.html

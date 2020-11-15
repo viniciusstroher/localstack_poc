@@ -5,31 +5,19 @@ services:
     container_name: "localstack-local"
     image: localstack/localstack
     ports:
-      - "4566:4566"
-      - "4571:4571"
-      - "4578:4578"
-      - "4572:4572"
-      - "4575:4575"
-      - "4576:4576"
-      - "4567:4567"
-      - "4569:4569"
-      - "4570:4570"
-      - "4574:4574"
-      - "9000:9000"
+      - "4563-4599:4563-4599"
+      - "8080:8080"
     environment:
-      - SERVICES=lambda,sqs,sns,s3,apigateway,cloudwatch,dynamodb
+      - SERVICES=lambda,sqs,sns,s3,cloudwatch,dynamodb
       - DEBUG=1
-      - DATA_DIR=/tmp/localstack
-      - PORT_WEB_UI=9000
-      - LAMBDA_EXECUTOR=docker
-      # - DOCKER_HOST=unix:///var/run/docker.sock
-      # - HOST_TMP_FOLDER=${TMPDIR}
-      - AWS_REGION=us-west-2
+      - DATA_DIR=/tmp/localstack/data
       - AWS_ACCESS_KEY_ID=test
       - AWS_SECRET_ACCESS_KEY=test
       - AWS_DEFAULT_OUTPUT=json
+      - AWS_REGION='us-west-2'
+      - DOCKER_HOST=unix:///var/run/docker.sock
     volumes:
       - "./localstack_data:/tmp/localstack"
       - "./app-to-upload:/app-to-upload"
-      # - "/var/run/docker.sock:/var/run/docker.sock"
       - ./startup-scripts:/docker-entrypoint-initaws.d
+      - "/var/run/docker.sock:/var/run/docker.sock"
