@@ -19,18 +19,34 @@ Starting mock Lambda (port 4574)...
 Starting mock Kinesis (port 4568)...
 
 # Comands
-awslocal kinesis list-streams
+
+## Aws login
+aws configure list
+
+## Setup local account
+aws configure --profile default (client,key: test, region: us-east-1, output format: json)
 
 ## Create s3 bucket
 awslocal s3 mb s3://huller1 (não usar caracteres especiais)
+
+## list s3 object
+awslocal s3 ls s3://huller1 --recursive
+
+## Delete s3 bucket
+awslocal s3 mb s3://huller1
+
+## Grant public access s3
+awslocal s3api put-bucket-acl --bucket huller1 --acl public-read-write
 
 ## List s3
 awslocal s3 ls (lista buckets)
 
 ## Copy
-aws s3 cp filename.txt s3://bucketname1
-aws s3 cp s3://bucketname1 s3://bucketname2
-aws s3 cp ./ s3://huller1 --recursive
+awslocal s3 cp index.html s3://huller1 --recursive (upload unico vai)
+awslocal s3 cp ./ s3://huller1 --recursive
 
 ## Create site via s3
 awslocal s3 website s3://huller1 --index-document index.html --error-document error.html
+
+# Service discover
+http://localhost:4566/health?reload
