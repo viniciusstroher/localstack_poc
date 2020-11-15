@@ -5,8 +5,7 @@ docker exec -it localstack-local bash -> access container bash
 # Local Client
 install (python with pip)
 pip install awscli-local (aws local cli)
-npm i -g serverless
-serverless deploy (envia lambda)
+npm install -g serverless@1.16.0 --force
 
 # Ports
 Elasticsearch (port 4571)...
@@ -56,15 +55,21 @@ awslocal s3 website s3://huller1 --index-document index.html --error-document er
 # Service discover
 http://localhost:4566/health?reload
 
-
-
 ## Test Url
-http://localhost:4566/huller1/index.html
-
+http://localhost:4566/huller1/index.html (compilar usando homepage no packge.json)
 ## DynamoDb Admin
 http://localhost:8001/
 
+## Lista lambda
+awslocal lambda list-functions
 
+## Invoke lambda
+awslocal --endpoint-url=http://localhost:4566 lambda invoke --function-name aws-node-simple-http-endpoint /dev/stdout
+### start lambad
+serverless invoke local --function aws-node-simple-http-endpoint
+
+### Install lambda from repo
+cd / && serverless install -u https://github.com/localstack/serverless-examples/tree/master/aws-node-simple-http-endpoint -n /aws-node-simple-http-endpoint
 
 #  Handbook
 https://lobster1234.github.io/2017/04/05/working-with-localstack-command-line/

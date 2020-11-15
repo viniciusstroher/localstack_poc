@@ -13,6 +13,7 @@ services:
       - DATA_DIR=/tmp/localstack/data
       - AWS_ACCESS_KEY_ID=test
       - AWS_SECRET_ACCESS_KEY=test
+      - AWS_SESSION_TOKEN=test
       - AWS_DEFAULT_OUTPUT=json
       - AWS_REGION='us-west-2'
       - DOCKER_HOST=unix:///var/run/docker.sock
