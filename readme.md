@@ -1,10 +1,12 @@
 # Cluster
 docker-compose up -> create and start
-docker-compose donw -> destroy and stop
-
+docker-compose doww -> destroy and stop
+docker exec -it localstack-local bash -> access container bash
 # Local Client
 install (python with pip)
-pip install awscli-local
+pip install awscli-local (aws local cli)
+npm i -g serverless
+serverless deploy (envia lambda)
 
 # Ports
 Elasticsearch (port 4571)...
@@ -61,3 +63,10 @@ http://localhost:4566/huller1/index.html
 
 ## DynamoDb Admin
 http://localhost:8001/
+
+
+
+#  Handbook
+https://lobster1234.github.io/2017/04/05/working-with-localstack-command-line/
+# Serverless example
+https://github.com/localstack/serverless-examples

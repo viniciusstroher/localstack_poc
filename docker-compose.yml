@@ -23,4 +23,5 @@ services:
       - "./app-to-upload:/app-to-upload"
       - ./startup-scripts:/docker-entrypoint-initaws.d
       - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./api-serverless:/api-serverless"
     privileged: true
