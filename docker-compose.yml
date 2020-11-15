@@ -7,18 +7,28 @@ services:
     ports:
       - "4566:4566"
       - "4571:4571"
-      - "${PORT_WEB_UI-8080}:${PORT_WEB_UI-8080}"
+      - "4578:4578"
+      - "4572:4572"
+      - "4575:4575"
+      - "4576:4576"
+      - "4567:4567"
+      - "4569:4569"
+      - "4570:4570"
+      - "4574:4574"
+      - "9000:9000"
     environment:
       - SERVICES=lambda,sqs,sns,s3,apigateway,cloudwatch,dynamodb
       - DEBUG=1
       - DATA_DIR=/tmp/localstack
-      # - PORT_WEB_UI=${PORT_WEB_UI- }
+      - PORT_WEB_UI=9000
       - LAMBDA_EXECUTOR=docker
       # - DOCKER_HOST=unix:///var/run/docker.sock
       # - HOST_TMP_FOLDER=${TMPDIR}
       - AWS_REGION=us-west-2
       - AWS_ACCESS_KEY_ID=test
       - AWS_SECRET_ACCESS_KEY=test
+      - AWS_DEFAULT_OUTPUT=json
     volumes:
       - "./localstack_data:/tmp/localstack"
       # - "/var/run/docker.sock:/var/run/docker.sock"
+      - ./startup-scripts:/docker-entrypoint-initaws.d

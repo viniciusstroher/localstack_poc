@@ -18,6 +18,9 @@ DynamoDB Streams (port 4570)...
 Starting mock Lambda (port 4574)...
 Starting mock Kinesis (port 4568)...
 
+# Access url
+http://localhost:9000
+
 # Comands
 
 ## Aws login
