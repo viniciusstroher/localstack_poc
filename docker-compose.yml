@@ -30,5 +30,6 @@ services:
       - AWS_DEFAULT_OUTPUT=json
     volumes:
       - "./localstack_data:/tmp/localstack"
+      - "./app-to-upload:/app-to-upload"
       # - "/var/run/docker.sock:/var/run/docker.sock"
       - ./startup-scripts:/docker-entrypoint-initaws.d
