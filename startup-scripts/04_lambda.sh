@@ -23,7 +23,8 @@
 #     --zip-file fileb:///aws-node-simple-http-endpoint.zip
 # rm aws-node-simple-http-endpoint.zip
 
-cd / && zip -qr api-serverless.zip /api-serverless/*
+# awslocal lambda delete-function --function-name api-serverless 
+cd /api-serverless && zip -qr -D ../api-serverless.zip * && cd ..
 awslocal lambda create-function \
     --function-name api-serverless \
     --runtime nodejs12.x \
