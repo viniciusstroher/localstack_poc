@@ -29,7 +29,7 @@ awslocal lambda create-function \
     --function-name api-serverless \
     --runtime nodejs12.x \
     --role admin \
-    --handler index.handler \
+    --handler handler \
     --memory-size 512 \
     --timeout 360 \
     --zip-file fileb:///api-serverless.zip
