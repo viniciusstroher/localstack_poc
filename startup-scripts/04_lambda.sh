@@ -24,12 +24,13 @@
 # rm aws-node-simple-http-endpoint.zip
 
 # awslocal lambda delete-function --function-name api-serverless 
+# Nome da funcao no handler.endpoin
 cd /api-serverless && zip -qr -D ../api-serverless.zip * && cd ..
 awslocal lambda create-function \
     --function-name api-serverless \
     --runtime nodejs12.x \
     --role admin \
-    --handler handler \
+    --handler handler.endpoint \
     --memory-size 512 \
     --timeout 360 \
     --zip-file fileb:///api-serverless.zip
