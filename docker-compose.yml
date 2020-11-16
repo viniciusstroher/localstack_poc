@@ -19,6 +19,7 @@ services:
       - DOCKER_HOST=unix:///var/run/docker.sock
       - HOSTNAME_EXTERNAL=localhost
       - PORT_WEB_UI=8080
+      - LAMBDA_EXECUTOR=docker
     volumes:
       - "./localstack_data:/tmp/localstack"
       - "./app-to-upload:/app-to-upload"

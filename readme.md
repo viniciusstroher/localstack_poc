@@ -65,13 +65,12 @@ awslocal lambda list-functions
 
 ## Invoke lambda
 awslocal --endpoint-url=http://localhost:4566 lambda invoke --function-name aws-node-simple-http-endpoint /dev/stdout
-### start lambad
-serverless invoke local --function aws-node-simple-http-endpoint
 
 ### Install lambda from repo
 cd / && serverless install -u https://github.com/localstack/serverless-examples/tree/master/aws-node-simple-http-endpoint -n /aws-node-simple-http-endpoint
 
 #  Handbook
 https://lobster1234.github.io/2017/04/05/working-with-localstack-command-line/
+
 # Serverless example
 https://github.com/localstack/serverless-examples

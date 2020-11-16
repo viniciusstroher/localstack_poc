@@ -12,13 +12,26 @@
 #     --zip-file "fileb:///docker-entrypoint-initaws.d/lambdas-code/$1/lambda.zip" \
 #     --endpoint-url http://localhost:4574
 
-cd / && zip -qr aws-node-simple-http-endpoint.zip /aws-node-simple-http-endpoint/*
+# cd / && zip -qr aws-node-simple-http-endpoint.zip /aws-node-simple-http-endpoint/*
+# awslocal lambda create-function \
+#     --function-name aws-node-simple-http-endpoint \
+#     --runtime nodejs10.x \
+#     --role admin \
+#     --handler index.handler \
+#     --memory-size 512 \
+#     --timeout 360 \
+#     --zip-file fileb:///aws-node-simple-http-endpoint.zip
+# rm aws-node-simple-http-endpoint.zip
+
+cd / && zip -qr api-serverless.zip /api-serverless/*
 awslocal lambda create-function \
-    --function-name aws-node-simple-http-endpoint \
-    --runtime nodejs10.x \
+    --function-name api-serverless \
+    --runtime nodejs12.x \
     --role admin \
     --handler index.handler \
     --memory-size 512 \
     --timeout 360 \
-    --zip-file fileb:///aws-node-simple-http-endpoint.zip
-rm aws-node-simple-http-endpoint.zip
+    --zip-file fileb:///api-serverless.zip
+rm api-serverless.zip
+
+# awslocal --endpoint-url=http://localhost:4566 lambda invoke --function-name api-serverless /dev/stdout
