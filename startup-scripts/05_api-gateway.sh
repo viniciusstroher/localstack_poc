@@ -80,4 +80,5 @@ awslocal apigateway create-deployment \
  --stage-name ${STAGE}
 
 #  #access
-#  #http://localhost:4566/restapis/aydpfr10jm/test/_user_request_/resourceid
+#  
+echo "http://localhost:4566/restapis/${API_ID}/test/_user_request_/${PATH_NAME}"
