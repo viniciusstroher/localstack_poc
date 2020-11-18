@@ -36,4 +36,15 @@ awslocal lambda create-function \
     --zip-file fileb:///api-serverless.zip
 rm api-serverless.zip
 
+cd /api-redis && npm i && zip -qr -D ../api-redis.zip * && cd ..
+awslocal lambda create-function \
+    --function-name api-redis \
+    --runtime nodejs12.x \
+    --role admin \
+    --handler handler.endpoint \
+    --memory-size 512 \
+    --timeout 360 \
+    --zip-file fileb:///api-redis.zip
+rm api-redis.zip
+
 # awslocal --endpoint-url=http://localhost:4566 lambda invoke --function-name api-serverless /dev/stdout
