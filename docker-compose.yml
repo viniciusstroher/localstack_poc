@@ -1,6 +1,12 @@
 version: '2.1'
 
 services:
+  # redis:
+  #   container_name: "redis"
+  #   image: redis
+  #   ports:
+  #     - "6379:6379"
+
   localstack:
     container_name: "localstack-local"
     image: localstack/localstack

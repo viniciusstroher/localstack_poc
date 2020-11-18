@@ -4,3 +4,6 @@ aws --endpoint-url=http://localhost:4566 configure set aws_session_token test --
 
 aws --endpoint-url=http://localhost:4566 configure set region us-west-2 --profile default
 aws --endpoint-url=http://localhost:4566 configure set output json --profile default
+
+echo "" >> /tmp/localstack/data/recorded_api_calls.json
+rm -rf /tmp/localstack/zipfile*
