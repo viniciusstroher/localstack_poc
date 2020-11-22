@@ -2,8 +2,8 @@
 set -x #echo on
 #lambda-name
 
-API_NAME=api-serverless 
-PATH_NAME=funcao
+API_NAME=api-auth 
+PATH_NAME=auth
 STAGE=test
 
 echo ""
@@ -29,10 +29,6 @@ echo "API_ID $API_ID"
 echo "PARENT_RESOURCE_ID $PARENT_RESOURCE_ID"
 echo ""
 
-#awslocal apigateway get-rest-apis -> id
-#awslocal apigateway get-resources --rest-api-id aydpfr10jm -> parent id
-#cria resource
-
 echo ""
 echo "Run create-resource "
 echo ""
@@ -49,7 +45,9 @@ echo ""
 echo ""
 echo "Run put-method "
 echo ""
+
 #adicionar resource recem criado
+#https://docs.aws.amazon.com/cli/latest/reference/apigateway/put-method.html
 awslocal apigateway put-method \
  --rest-api-id ${API_ID} \
  --resource-id ${RESOURCE_ID} \
@@ -68,7 +66,7 @@ awslocal apigateway put-integration \
  --http-method GET \
  --type AWS_PROXY \
  --integration-http-method POST \
- --uri arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/${LAMBDA_ARN}/invocations \
+ --uri arn:aws:apigateway:us-east-1:lambda:path/system/functions/${LAMBDA_ARN}/invocations \
  --passthrough-behavior WHEN_NO_MATCH
 
 echo ""
@@ -82,3 +80,4 @@ awslocal apigateway create-deployment \
 #  #access
 #  
 echo "http://localhost:4566/restapis/${API_ID}/test/_user_request_/${PATH_NAME}"
+# "http://localhost:4566/restapis/${API_ID}/test/_user_request_/${PATH_NAME} \n" >> /docker 

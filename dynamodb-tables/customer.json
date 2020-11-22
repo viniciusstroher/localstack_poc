@@ -1,0 +1,27 @@
+{
+    "AttributeDefinitions": [
+        {
+            "AttributeName": "Id", 
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "Name", 
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "SOCIAL_DOCUMENT", 
+            "AttributeType": "S"
+        },
+        {
+            "AttributeName": "SOCIAL_DOCUMENT_TYPE", 
+            "AttributeType": "S"
+        }
+    ], 
+    "TableName": "customer", 
+    "KeySchema": [
+        {
+            "KeyType": "HASH", 
+            "AttributeName": "Id"
+        }
+    ]
+}

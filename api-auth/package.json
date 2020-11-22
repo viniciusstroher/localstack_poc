@@ -1,0 +1,19 @@
+{
+  "name": "api-auth",
+  "version": "1.0.0",
+  "description": "Auth lambda",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "aws-apigw-authorizer": "^0.3.0"
+  },
+  "scripts": {
+    "build": "babel handler.js --out-file handler.es6.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.7",
+    "@babel/core": "^7.12.7",
+    "@babel/preset-env": "^7.12.7"
+  }
+}
+
