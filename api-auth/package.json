@@ -8,7 +8,7 @@
     "aws-apigw-authorizer": "^0.3.0"
   },
   "scripts": {
-    "build": "babel handler.js --out-file handler.es6.js"
+    "build": "babel handler.js --out-file handler_es6.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.7",
