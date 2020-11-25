@@ -1,0 +1,7 @@
+{
+    "Variables":
+    {
+        "BASIC_AUTH_USER_admin":"admin",
+        "ALLOWED_IP_ADDRESSES":"0.0.0.0/0,0.0.0.0/0"
+    }
+}

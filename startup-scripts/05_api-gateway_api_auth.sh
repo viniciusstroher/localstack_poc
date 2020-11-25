@@ -58,6 +58,7 @@ awslocal apigateway put-method \
 echo ""
 echo "Run put-integration "
 echo ""
+URI=arn:aws:apigateway:us-east-1:lambda:path/system/functions/${LAMBDA_ARN}/invocations
 #anexao ao lambda pegar id do lambda
 awslocal apigateway put-integration \
  --region us-east-1 \
@@ -66,8 +67,9 @@ awslocal apigateway put-integration \
  --http-method GET \
  --type AWS_PROXY \
  --integration-http-method POST \
- --uri arn:aws:apigateway:us-east-1:lambda:path/system/functions/${LAMBDA_ARN}/invocations \
+ --uri ${URI} \
  --passthrough-behavior WHEN_NO_MATCH
+
 
 echo ""
 echo "Run create-deployment "
@@ -76,6 +78,16 @@ echo ""
 awslocal apigateway create-deployment \
  --rest-api-id ${API_ID} \
  --stage-name ${STAGE}
+
+echo ""
+echo "Run create-authorizer "
+echo ""
+awslocal apigateway create-authorizer --rest-api-id ${API_ID} \
+    --name 'CUSTOM_AUTH' \
+    --type TOKEN \
+    --authorizer-uri ${URI} \ 
+    --identity-source 'method.request.header.Authorization' \
+    --authorizer-result-ttl-in-seconds 300
 
 #  #access
 #  

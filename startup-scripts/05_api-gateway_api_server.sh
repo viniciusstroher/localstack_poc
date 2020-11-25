@@ -56,6 +56,10 @@ awslocal apigateway put-method \
  --resource-id ${RESOURCE_ID} \
  --http-method GET \
  --authorization-type "CUSTOM"
+ --authorizer-id authorizer-id
+ --api-key-required
+ --identity-source '$request.header.Authorization' \
+
 #  --request-parameters "method.request.path.${PATH_NAME}=true" \
 
 echo ""
