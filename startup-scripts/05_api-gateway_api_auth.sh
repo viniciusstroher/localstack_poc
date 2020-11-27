@@ -82,13 +82,7 @@ awslocal apigateway create-deployment \
 echo ""
 echo "Run create-authorizer "
 echo ""
-awslocal apigateway create-authorizer --rest-api-id ${API_ID} \
-    --name 'CUSTOM_AUTH' \
-    --type TOKEN \
-    --authorizer-uri ${URI} \ 
-    --identity-source 'method.request.header.Authorization' \
-    --authorizer-result-ttl-in-seconds 300
-
+awslocal apigateway create-authorizer --rest-api-id ${API_ID} --name CUSTOM_AUTH --type TOKEN --authorizer-uri ${URI} --identity-source method.request.header.Authorization --authorizer-result-ttl-in-seconds 300
 #  #access
 #  
 echo "http://localhost:4566/restapis/${API_ID}/test/_user_request_/${PATH_NAME}"
