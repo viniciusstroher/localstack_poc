@@ -82,8 +82,9 @@ awslocal apigateway create-deployment \
 echo ""
 echo "Run create-authorizer "
 echo ""
-awslocal apigateway create-authorizer --rest-api-id ${API_ID} --name CUSTOM_AUTH --type TOKEN --authorizer-uri ${URI} --identity-source method.request.header.Authorization --authorizer-result-ttl-in-seconds 300
-export AUTHORIZER_API=$(awslocal apigateway get-authorizers  --rest-api-id ${API_ID} --query "items[?name=='/${CUSTOM_AUTH}'].id" --output text | cut -f1)
+AUTHORIZER_NAME=CUSTOM_AUTH
+awslocal apigateway create-authorizer --rest-api-id ${API_ID} --name ${AUTHORIZER_NAME} --type TOKEN --authorizer-uri ${URI} --identity-source method.request.header.Authorization --authorizer-result-ttl-in-seconds 300
+export -p AUTHORIZER_API=$(awslocal apigateway get-authorizers  --rest-api-id ${API_ID} --query "items[?name=='${AUTHORIZER_NAME}'].id" --output text | cut -f1)
 #  #access
 echo ""
 echo "Run create-authorizer "
